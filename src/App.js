@@ -48,7 +48,12 @@ function App() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input is='one-time-code' autocomplete='one-time-code' required />
+        <input
+          is='one-time-code'
+          autocomplete='one-time-code'
+          id='otp'
+          required
+        />
         <input type='submit' />
       </form>
     </>
