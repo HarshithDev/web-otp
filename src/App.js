@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
-function App() {
+function App(ref) {
+  const [formdata, setFormData] = useState({});
+
   if ('customElements' in window && 'OTPCredential' in window) {
     customElements.define(
       'one-time-code',
@@ -35,26 +37,42 @@ function App() {
     );
   }
 
-  const otp = document.querySelector('#otp');
-  otp.addEventListener('autocomplete', (e) => {
-    this.form.submit();
-  });
+  // const handler = () => {
+  //   console.log('clicked');
+  //   document.getElementById('otpForm').submit(handleSubmit);
+  // };
+
+  useEffect(() => {
+    // window.document.getElementById('xxx').addEventListener('click', handler);
+  }, []);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setFormData({
+      ...formdata,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('OTP RECEIVED');
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id='otpForm'>
         <input
           is='one-time-code'
           autocomplete='one-time-code'
           id='otp'
+          className={'otp'}
+          name={'otp'}
+          value={formdata.otp ? formdata.otp : ''}
+          onChange={handleChange}
           required
         />
-        <input type='submit' />
+        <input type='submit' id='xxx' />
       </form>
     </>
   );

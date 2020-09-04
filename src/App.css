@@ -1,0 +1,8 @@
+body {
+  margin: 30px;
+}
+input {
+  padding: 8px;
+  display: block;
+  width: 100%;
+}
