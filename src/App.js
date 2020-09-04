@@ -35,9 +35,19 @@ function App() {
     );
   }
 
+  const otp = document.querySelector('#otp');
+  otp.addEventListener('autocomplete', (e) => {
+    this.form.submit();
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('OTP RECEIVED');
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input is='one-time-code' autocomplete='one-time-code' required />
         <input type='submit' />
       </form>
