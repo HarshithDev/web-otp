@@ -24,6 +24,7 @@ function App(ref) {
               otp: { transport: ['sms'] },
               signal: this.abortController.signal,
             });
+            console.log(content);
             this.value = content.code;
             this.dispatchEvent(new Event('autocomplete'));
           } catch (e) {
